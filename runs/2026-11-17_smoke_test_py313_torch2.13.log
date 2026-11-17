@@ -1,0 +1,42 @@
+==============================================================
+ split inference starter kit smoke test
+ SPLIT_VENV=~/split-inference-venv-313
+ python  ~/split-inference-venv-313/bin/python
+==============================================================
+ threads 4 (change with EE_SPLIT_THREADS)
+
+[1/5] Runtime
+  [32mpass[0m  torch/torchvision 2.13.0 0.28.0
+
+[2/5] Splitting models into stages
+     OK resnet18 stages=6 out=(1, 1000)
+     OK resnet50 stages=6 out=(1, 1000)
+     OK mobilenet_v3_large stages=6 out=(1, 1000)
+  [32mpass[0m  all 3 models give the expected output (1,1000)
+
+[3/5] Split point sweep (split_bench.py)
+  [32mpass[0m  results.csv written (14 rows)
+
+[4/5] Live harness (split_serve.py)
+                5         5.0     100%
+               10        10.0     100%
+               25        24.8      99%
+               50        49.7      99%
+              100        97.2      97%
+       → reference value: the highest target the pacer tracked in this calibration is about 100 Mb/s.
+          This is a **reference value, not a guaranteed ceiling**. Calibration measures one payload
+  [32mpass[0m  pacer calibration done (the above is a reference value — the effective bandwidth in each run report is authoritative)
+       [selftest] Pinning server and client to 4 threads each (cores 8). If the two processes fight over the same cores, a cost the prediction model lacks shows up as error.
+         · actual transfer          324.3 ms  → effective bandwidth 9.9 Mb/s (target 10)
+       measured end-to-end          357.3 ms
+       predicted (bench)            340.8 ms
+       error                        +4.9 %
+  [32mpass[0m  error vs predicted +4.9% (at 10 Mb/s, within 35%)
+
+[5/5] Model sanity check (bandwidth ↑ → offloading wins)
+  [32mpass[0m  1 Mb/s → all_local, 500 Mb/s → input (crossover OK)
+
+==============================================================
+ passed 6 / failed 0
+ Ready — start with Question 1 in BRIEF.md.
+==============================================================

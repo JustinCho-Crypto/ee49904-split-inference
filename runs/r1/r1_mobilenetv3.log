@@ -1,0 +1,20 @@
+torch 2.13.0 · threads 1 · weights random · layout NCHW(default)
+
+### mobilenet_v3_large — profiling stages…
+  stage           output shape          out elements  stage ms   cum. ms  jitter max/min
+  features0_2     (1, 16, 112, 112)          200,704      0.93      0.93            1.3x
+  features2_4     (1, 24, 56, 56)             75,264      3.12      4.05            1.2x
+  features4_7     (1, 40, 28, 28)             31,360      3.67      7.72            1.3x
+  features7_13    (1, 112, 14, 14)            21,952      2.37     10.08            1.2x
+  features13_17   (1, 960, 7, 7)              47,040      8.70     18.78            1.1x
+  head            (1, 1000)                    1,000      0.14     18.93            1.8x
+  best @      1 Mb/s · RTT   20 ms · fp32  → all_local            64.4 ms
+  best @      2 Mb/s · RTT   20 ms · fp32  → all_local            64.4 ms
+  best @      5 Mb/s · RTT   20 ms · fp32  → all_local            64.4 ms
+  best @     10 Mb/s · RTT   20 ms · fp32  → all_local            64.4 ms
+  best @     20 Mb/s · RTT   20 ms · fp32  → all_local            64.4 ms
+  best @     50 Mb/s · RTT   20 ms · fp32  → all_local            64.4 ms
+  best @    100 Mb/s · RTT   20 ms · fp32  → features4_7          56.6 ms
+  best @    200 Mb/s · RTT   20 ms · fp32  → input                44.6 ms
+
+Saved 56 rows to ~/ee49904-split-inference/runs/r1/r1_mobilenetv3_ds3.4_ts38_t1.csv.

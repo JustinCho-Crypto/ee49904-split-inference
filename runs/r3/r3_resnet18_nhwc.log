@@ -1,0 +1,20 @@
+torch 2.13.0 · threads 4 · weights random · layout NHWC(channels_last)
+
+### resnet18 — profiling stages…
+  stage           output shape          out elements  stage ms   cum. ms  jitter max/min
+  stem            (1, 64, 56, 56)            200,704      1.32      1.32            1.5x
+  layer1          (1, 64, 56, 56)            200,704      1.45      2.77            1.5x
+  layer2          (1, 128, 28, 28)           100,352      1.17      3.95            1.5x
+  layer3          (1, 256, 14, 14)            50,176      1.39      5.33            1.2x
+  layer4          (1, 512, 7, 7)              25,088      2.66      8.00            1.2x
+  head            (1, 1000)                    1,000      0.03      8.03            1.6x
+  best @      1 Mb/s · RTT   20 ms · fp32  → all_local           120.4 ms
+  best @      2 Mb/s · RTT   20 ms · fp32  → all_local           120.4 ms
+  best @      5 Mb/s · RTT   20 ms · fp32  → all_local           120.4 ms
+  best @     10 Mb/s · RTT   20 ms · fp32  → all_local           120.4 ms
+  best @     20 Mb/s · RTT   20 ms · fp32  → all_local           120.4 ms
+  best @     50 Mb/s · RTT   20 ms · fp32  → input               116.5 ms
+  best @    100 Mb/s · RTT   20 ms · fp32  → input                68.4 ms
+  best @    200 Mb/s · RTT   20 ms · fp32  → input                44.3 ms
+
+Saved 56 rows to ~/ee49904-split-inference/runs/r3/r3_resnet18_nhwc.csv.

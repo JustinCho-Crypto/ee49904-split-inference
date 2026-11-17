@@ -1,0 +1,15 @@
+  [selftest] Pinning server and client to 4 threads each (cores 8). If the two processes fight over the same cores, a cost the prediction model lacks shows up as error.
+
+  model resnet18 · split point input · NCHW · link 100.0 Mb/s · RTT 20.0 ms
+  bytes sent                 603,689
+  device compute                 0.0 ms
+  serialization                  0.4 ms
+  transfer+remote+resp          89.7 ms
+    · RTT (measured)            24.1 ms
+    · remote deserial.           0.4 ms
+    · remote compute            15.9 ms
+    · actual transfer           49.2 ms  → effective bandwidth 98.1 Mb/s (target 100)
+  ────────────────────────────────────
+  measured end-to-end           90.2 ms
+  predicted (bench)             77.9 ms
+  error                       +15.8 %

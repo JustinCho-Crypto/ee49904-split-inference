@@ -1,0 +1,9 @@
+model,set,trace,alpha,margin,oracle_mean,static_cut,static_mean,adaptive_mean,regret_adaptive,regret_static,adaptive_p95,static_p95,adaptive_p99,static_p99,switches,probes,requests
+mobilenet_v3_large,design,step_0.1s,0.8,0.1,58.8,all_local,64.4,68.8,10.0,5.5,89.6,64.4,195.0,64.4,58,51,872
+mobilenet_v3_large,design,step_1.0s,0.8,0.1,58.7,all_local,64.4,66.6,7.9,5.7,64.4,64.4,247.2,64.4,50,41,901
+mobilenet_v3_large,design,step_10.0s,0.8,0.1,55.0,all_local,64.4,55.6,0.6,9.4,64.4,64.4,89.6,64.4,29,27,1079
+mobilenet_v3_large,held-out,fading,0.8,0.1,63.3,all_local,64.4,64.3,0.9,1.0,64.4,64.4,80.5,64.4,49,49,934
+mobilenet_v3_large,held-out,drops,0.8,0.1,59.6,all_local,64.4,100.9,41.4,4.8,66.6,64.4,1459.4,64.4,39,35,672
+mobilenet_v3_large,held-out,step_0.1s_new,0.8,0.1,59.6,all_local,64.4,69.6,10.0,4.7,68.6,64.4,247.2,64.4,58,49,863
+mobilenet_v3_large,held-out,step_1.0s_new,0.8,0.1,59.1,all_local,64.4,65.5,6.4,5.2,64.4,64.4,195.0,64.4,48,39,916
+mobilenet_v3_large,held-out,step_10.0s_new,0.8,0.1,64.4,all_local,64.4,65.9,1.6,0.0,66.6,64.4,124.8,64.4,54,54,911
